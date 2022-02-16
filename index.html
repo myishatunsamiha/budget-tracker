@@ -33,7 +33,10 @@
                             <h5>Income</h5>
                             <div class="row">
                                 <div class="col-md-3 text-end">Income:</div>
-                                <div class="col-md-9"><input type="text" class="form-control"></div>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="income">
+                                    <p id="income-error" class="text-muted">Please input a number..</p>
+                                </div>
                             </div>
 
                         </div>
@@ -42,15 +45,15 @@
                             <h5>Expenses</h5>
                             <div class="row my-2">
                                 <div class="col-md-3 text-end">Food:</div>
-                                <div class="col-md-9"><input type="text" class="form-control"></div>
+                                <div class="col-md-9"><input type="text" class="form-control" id="food-budget"></div>
                             </div>
                             <div class="row my-2">
                                 <div class="col-md-3 text-end">Rent:</div>
-                                <div class="col-md-9"><input type="text" class="form-control"></div>
+                                <div class="col-md-9"><input type="text" class="form-control" id="rent-budget"></div>
                             </div>
                             <div class="row my-2">
                                 <div class="col-md-3 text-end">Clothes:</div>
-                                <div class="col-md-9"><input type="text" class="form-control"></div>
+                                <div class="col-md-9"><input type="text" class="form-control" id="clothes-budget"></div>
                             </div>
 
                             <button id="calculate-btn" class="btn">Calculate</button>

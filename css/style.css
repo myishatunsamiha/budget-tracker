@@ -29,6 +29,10 @@ body {
     flex-direction: column;
 } */
 
+#income-error {
+    display: none;
+}
+
 .btn {
     color: white;
     background-color: #59A5FF;
