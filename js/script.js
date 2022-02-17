@@ -1,63 +1,102 @@
-document.getElementById("income").addEventListener("keyup", function (event) {
-    // console.log(event.target.value);
-    // console.log(parseFloat(event.target.value));
-
-    if (event.target.value == "") {
-        document.getElementById("income-error").style.display = "none";
-
-    } else if (isNaN(parseFloat(event.target.value))) {
-        console.log("input value must be a number.");
-        document.getElementById("income-error").style.display = "block";
-
-    } else if (parseFloat(event.target.value) < 0) {
-        console.log("income can not be less than 0.");
-        document.getElementById("income-error").style.display = "block";
-
-    } else {
-        document.getElementById("income-error").style.display = "none";
-    }
-
-});
 
 function getElement(id) {
     return document.getElementById(id);
 }
 
-function inputValue(id) {
-    const inputField = getElement(id);
-    const inputAmount = parseFloat(inputField.value);
-    return inputAmount;
+
+function displayErrorMessage(errorType, errorId, id) {
+    const eType = document.getElementById(errorType);
+    const eId = document.getElementById(errorId);
+
+    eId.innerText = id;
+    eType.style.display = "block";
 }
+
+
+function getValidInput(id) {
+    const element = document.getElementById(id);
+
+
+    if (isNaN(parseFloat(element.value))) {
+        displayErrorMessage("type-error", "type-error-id", id);
+        return;
+
+    } else if (parseFloat(element.value) < 0) {
+        displayErrorMessage("negative-number-error", "negative-number-error-id", id);
+        return;
+
+    } else {
+        document.getElementById("negative-number-error").style.display = "none";
+        document.getElementById("type-error").style.display = "none";
+        const inputAmount = parseFloat(element.value);
+        return inputAmount;
+    }
+}
+
 
 document.getElementById("calculate-btn").addEventListener("click", function () {
     // getting the income input value by calling inputValue function 
-    const income = inputValue("income");
+    const income = getValidInput("income");
+    if (isNaN(income)) {
+        return;
+    }
 
     // getting the food, rent and clothes expenses input value by calling inputValue function 
-    const foodBudget = inputValue("food-budget");
-    const rentBudget = inputValue("rent-budget");
-    const clothesBudget = inputValue("clothes-budget");
+    const food = getValidInput("food");
+    if (isNaN(food)) {
+        return;
+    }
+    const rent = getValidInput("rent");
+    if (isNaN(rent)) {
+        return;
+    }
+    const clothes = getValidInput("clothes");
+    if (isNaN(clothes)) {
+        return;
+    }
 
     // calculation total expenses and balance from the input values
-    const totalExpenses = foodBudget + rentBudget + clothesBudget;
-    const balance = income - totalExpenses;
-    console.log(totalExpenses);
+    if (!isNaN(income) && !isNaN(food) && !isNaN(rent) && !isNaN(clothes)) {
+        const totalExpenses = food + rent + clothes;
+        const balance = income - totalExpenses;
 
-    // displaying total expenses and balance on the html document
-    getElement("total-expenses").innerText = totalExpenses;
-    getElement("balance").innerText = balance;
+        // displaying total expenses and balance on the html document
+        getElement("total-expenses").innerText = totalExpenses;
+        console.log(totalExpenses, income);
+
+        if (totalExpenses > income) {
+            getElement("balance").innerHTML = "<span style='color:red;'>0(Expenses exceeded income)</span>";
+            displayErrorMessage("total-expenses-error", "total-expenses-error-id", "total-expenses");
+        } else {
+            getElement("balance").innerText = balance;
+            document.getElementById("total-expenses-error").style.display = "none";
+        }
+
+    }
 
 });
 
 document.getElementById("saving-calculation-btn").addEventListener("click", function () {
-    const savingPercentage = inputValue("saving-percentage");
+    const savingPercentage = getValidInput("saving-percentage");
 
+    const income = parseFloat(getElement("income").value);
     const balance = parseFloat(getElement("balance").innerText);
+    console.log(savingPercentage, income, balance);
 
-    const savingAmount = balance * (savingPercentage / 100);
+    // if (!isNaN(savingPercentage) && !isNaN(income) && !isNaN(balance)) {
+    const savingAmount = income * (savingPercentage / 100);
     const remainingBalance = balance - savingAmount;
     console.log(savingAmount, remainingBalance);
 
     getElement("saving-amount").innerText = savingAmount;
-    getElement("remaining-balance").innerText = remainingBalance;
+    if (savingAmount > balance) {
+        getElement("remaining-balance").innerText = "can't calculate.";
+        displayErrorMessage("excess-saving-amount-error", "excess-saving-amount-error-id", "saving-amount");
+
+    } else {
+        getElement("remaining-balance").innerText = remainingBalance;
+        document.getElementById("excess-saving-amount-error").style.display = "none";
+    }
+    // }
+
 });

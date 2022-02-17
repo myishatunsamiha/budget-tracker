@@ -45,20 +45,20 @@
                             <h5>Expenses</h5>
                             <div class="row my-2">
                                 <div class="col-md-3 text-end">Food:</div>
-                                <div class="col-md-9"><input type="text" class="form-control" id="food-budget"></div>
+                                <div class="col-md-9"><input type="text" class="form-control" id="food"></div>
                             </div>
                             <div class="row my-2">
                                 <div class="col-md-3 text-end">Rent:</div>
-                                <div class="col-md-9"><input type="text" class="form-control" id="rent-budget"></div>
+                                <div class="col-md-9"><input type="text" class="form-control" id="rent"></div>
                             </div>
                             <div class="row my-2">
                                 <div class="col-md-3 text-end">Clothes:</div>
-                                <div class="col-md-9"><input type="text" class="form-control" id="clothes-budget"></div>
+                                <div class="col-md-9"><input type="text" class="form-control" id="clothes"></div>
                             </div>
 
                             <button id="calculate-btn" class="btn">Calculate</button>
-                            <p class="fw-bold">Total Expenses: <span id="total-expenses">5500</span></p>
-                            <p class="fw-bold">Balance: <span id="balance">4500</span></p>
+                            <p class="fw-bold">Total Expenses: <span id="total-expenses">0</span></p>
+                            <p class="fw-bold">Balance: <span id="balance">0</span></p>
 
                             <div class="row my-3 d-flex align-items-center">
                                 <div class="col-md-3 text-end">Save:</div>
@@ -71,6 +71,27 @@
 
                             <p class="fw-bold">Saving Amount: <span id="saving-amount">2000</span></p>
                             <p class="fw-bold">Remaining Balance: <span id="remaining-balance">2500</span></p>
+
+
+                            <div class="alert alert-danger" role="alert" id="type-error">
+                                <span id="type-error-id"></span> field must be of number type.
+                            </div>
+
+                            <div class="alert alert-danger" role="alert" id="negative-number-error">
+                                <span id="negative-number-error-id"></span> can not be a negative number.
+                            </div>
+
+                            <div class="alert alert-warning" role="alert" id="total-expenses-error">
+                                <span id="total-expenses-error-id"></span> can not be greater than balance.
+                            </div>
+
+                            <div class="alert alert-warning" role="alert" id="excess-saving-amount-error">
+                                <span id="excess-saving-amount-error-id"></span> can not be greater than balance. please
+                                adjust
+                                the
+                                amount.
+                            </div>
+
                         </div>
 
                     </div>

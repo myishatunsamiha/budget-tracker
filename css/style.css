@@ -54,3 +54,7 @@ body {
     height: 100%;
     border-radius: 2px;
 }
+
+#negative-number-error, #type-error, #total-expenses-error, #excess-saving-amount-error {
+    display: none;
+}
