@@ -32,7 +32,7 @@
                         <div class="income my-3">
                             <h5>Income</h5>
                             <div class="row">
-                                <div class="col-md-3 text-end">Income:</div>
+                                <div class="col-md-3 text-center text-md-end">Income:</div>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" id="income">
                                     <p id="income-error" class="text-muted">Please input a number..</p>
@@ -44,15 +44,15 @@
                         <div class="expenses my-3">
                             <h5>Expenses</h5>
                             <div class="row my-2">
-                                <div class="col-md-3 text-end">Food:</div>
+                                <div class="col-md-3 text-center text-md-end">Food:</div>
                                 <div class="col-md-9"><input type="text" class="form-control" id="food"></div>
                             </div>
                             <div class="row my-2">
-                                <div class="col-md-3 text-end">Rent:</div>
+                                <div class="col-md-3 text-center text-md-end">Rent:</div>
                                 <div class="col-md-9"><input type="text" class="form-control" id="rent"></div>
                             </div>
                             <div class="row my-2">
-                                <div class="col-md-3 text-end">Clothes:</div>
+                                <div class="col-md-3 text-center text-md-end">Clothes:</div>
                                 <div class="col-md-9"><input type="text" class="form-control" id="clothes"></div>
                             </div>
 
@@ -61,16 +61,18 @@
                             <p class="fw-bold">Balance: <span id="balance">0</span></p>
 
                             <div class="row my-3 d-flex align-items-center">
-                                <div class="col-md-3 text-end">Save:</div>
-                                <div class="col-md-4"><input type="text" class="form-control" id="saving-percentage">
+                                <div class="col-md-3 text-center text-md-end">Save:</div>
+                                <div class="col-10 col-md-4"><input type="text" class="form-control"
+                                        id="saving-percentage">
                                 </div>
-                                <div class="col-md-1">%</div>
-                                <div class="col-md-4"><button class="btn" id="saving-calculation-btn">Save</button>
+                                <div class="col-2 col-md-1">%</div>
+                                <div class="col-md-4 mt-4 mt-md-0"><button class="btn"
+                                        id="saving-calculation-btn">Save</button>
                                 </div>
                             </div>
 
-                            <p class="fw-bold">Saving Amount: <span id="saving-amount">2000</span></p>
-                            <p class="fw-bold">Remaining Balance: <span id="remaining-balance">2500</span></p>
+                            <p class="fw-bold">Saving Amount: <span id="saving-amount">0</span></p>
+                            <p class="fw-bold">Remaining Balance: <span id="remaining-balance">0</span></p>
 
 
                             <div class="alert alert-danger" role="alert" id="type-error">

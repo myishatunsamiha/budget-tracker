@@ -83,20 +83,20 @@ document.getElementById("saving-calculation-btn").addEventListener("click", func
     const balance = parseFloat(getElement("balance").innerText);
     console.log(savingPercentage, income, balance);
 
-    // if (!isNaN(savingPercentage) && !isNaN(income) && !isNaN(balance)) {
-    const savingAmount = income * (savingPercentage / 100);
-    const remainingBalance = balance - savingAmount;
-    console.log(savingAmount, remainingBalance);
+    if (!isNaN(savingPercentage) && !isNaN(income) && !isNaN(balance)) {
+        const savingAmount = (income * (savingPercentage / 100)).toFixed(2);
+        const remainingBalance = balance - savingAmount;
+        console.log(savingAmount, remainingBalance);
 
-    getElement("saving-amount").innerText = savingAmount;
-    if (savingAmount > balance) {
-        getElement("remaining-balance").innerText = "can't calculate.";
-        displayErrorMessage("excess-saving-amount-error", "excess-saving-amount-error-id", "saving-amount");
+        getElement("saving-amount").innerText = savingAmount;
+        if (savingAmount > balance) {
+            getElement("remaining-balance").innerHTML = "<span style='color:red;'>0(Saving amount exceeded balance)</span>";
+            displayErrorMessage("excess-saving-amount-error", "excess-saving-amount-error-id", "saving-amount");
 
-    } else {
-        getElement("remaining-balance").innerText = remainingBalance;
-        document.getElementById("excess-saving-amount-error").style.display = "none";
+        } else {
+            getElement("remaining-balance").innerText = remainingBalance;
+            document.getElementById("excess-saving-amount-error").style.display = "none";
+        }
     }
-    // }
 
 });
