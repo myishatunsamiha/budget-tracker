@@ -83,8 +83,8 @@ document.getElementById("calculate-btn").addEventListener("click", function () {
 
     // calculation of total expenses and balance from the input values
     if (!isNaN(income) && !isNaN(food) && !isNaN(rent) && !isNaN(clothes)) {       // if all the values are numbers, do the calculations
-        const totalExpenses = food + rent + clothes;        // calculating total expenses
-        const balance = income - totalExpenses;             // calculating balance
+        const totalExpenses = (food + rent + clothes).toFixed(2);        // calculating total expenses
+        const balance = (income - totalExpenses).toFixed(2);             // calculating balance
 
         // displaying total expenses and balance on the html document
         getElement("total-expenses").innerText = totalExpenses;
